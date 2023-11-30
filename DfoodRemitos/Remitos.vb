@@ -14,7 +14,6 @@ Public Class Remitos
     Dim idart As Single
     Dim idArticuloSeleccionado As Integer
     Dim Desdecodigo As Boolean = False
-    Public oInforme As New crComprobante()
     Declare Function SetDefaultPrinter Lib "winspool.drv" Alias "SetDefaultPrinterA" (ByVal pszPrinter As String) As Boolean
     Private Declare Function ShellExecute Lib "shell32.dll" Alias "ShellExecuteA" (ByVal hwnd As Long, ByVal lpOperation As String, ByVal lpFile As String, ByVal lpParameters As String, ByVal lpDirectory As String, ByVal nShowCmd As Long) As Long
 

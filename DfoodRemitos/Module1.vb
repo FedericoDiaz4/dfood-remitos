@@ -13,7 +13,7 @@ Module Module1
     Public conexion As New MySqlConnection()
     Public conexionBis As New MySqlConnection()
     Public Const cadenaConexion As String = "SERVER=gloria-pc; PORT=3306; DataBase=dfoodremitos; Uid=root; Pwd=cmsis00; Convert Zero Datetime=True; "
-    'Public Const cadenaConexion As String = "SERVER=localhost; PORT=3306; DataBase=dfoodremitos; Uid=root; Pwd=cmsis00; Convert Zero Datetime=True; "
+    'Public Const cadenaConexion As String = "SERVER=localhost; PORT=3307; DataBase=dfoodremitos; Uid=root; Pwd=cmsis00; Convert Zero Datetime=True; SslMode = 0;"
     Public SQL As String
     Public nTmp As String
     Private Declare Function ShellExecute Lib "shell32.dll" Alias "ShellExecuteA" (ByVal hwnd As Long, ByVal lpOperation As String, ByVal lpFile As String, ByVal lpParameters As String, ByVal lpDirectory As String, ByVal nShowCmd As Long) As Long
@@ -437,92 +437,6 @@ Module Module1
 
         filest.Close()
         MsgBox("Error interno, por favor consulte con el soporte del sistema.")
-
-    End Sub
-
-
-    Sub ImprimePDF(Comprobante As String, ptoventa As Integer, numcomprobante As String, TC As String,
-                   Optional CodigoPersona As Integer = 0, Optional Letra As String = "")
-
-        Dim pdfjob As PDFCreator.clsPDFCreator
-        Dim sPDFName As String
-        Dim sPDFPath As String
-        Dim sPrinterName As String
-        Dim sReportName As String
-        Dim lPrinters As Long
-        Dim lPrinterCurrent As Long
-        Dim lPrinterPDF As Long
-        Dim prtDefault As New PrinterSettings
-        Dim impresoraActual As String
-
-        If Comprobante = "Remito" Then
-            'sReportName = "crRemito"
-            sReportName = "crComprobante"
-            sPDFName = TC & "-" & Format(CInt(ptoventa), "0000") & "-" & Format(CInt(numcomprobante), "00000000") & ".pdf"
-            sPDFPath = "\\server\F\RemitosSistema\"
-            'sPDFPath = "c:\pdf\"
-        Else
-            Exit Sub
-        End If
-
-        If ExisteArchivo(sPDFPath & sPDFName) Then
-            Try
-                Dim fs As System.IO.FileStream = System.IO.File.OpenWrite(sPDFPath & sPDFName)
-                fs.Close()
-            Catch ex As Exception
-                MsgBox("Archivo PDF " & sPDFPath & sPDFName & " esta abierto. Por favor verifique cierre el mismo y re-imprima.")
-                Exit Sub
-
-            End Try
-
-        End If
-
-
-        impresoraActual = prtDefault.PrinterName
-        SetDefaultPrinter("PDFCreator")
-
-        pdfjob = New PDFCreator.clsPDFCreator
-        With pdfjob
-            If .cStart("/NoProcessingAtStartup") = False Then
-                MsgBox("No se puede iniciar PDFCreator.", vbCritical + vbOKOnly, "PrtPDFCreator")
-                Exit Sub
-            End If
-            .cOption("UseAutosave") = 1
-            .cOption("UseAutosaveDirectory") = 1
-            .cOption("Title") = sPDFName
-            .cOption("DocumentName") = sPDFName
-            .cOption("AutosaveDirectory") = sPDFPath
-            .cOption("AutosaveFilename") = sPDFName
-            .cOption("AutosaveFormat") = 0 ' 0 = PDF
-            .cClearCache()
-
-        End With
-
-        If Comprobante = "Remito" Then
-            'Remitos.oInforme.SetDatabaseLogon("root", "cmsis00", "localhost", "dfoodremitos")'
-            Remitos.oInforme.PrintToPrinter(1, False, 1, 1)
-        End If
-
-        Do Until pdfjob.cCountOfPrintjobs = 1
-
-        Loop
-
-        pdfjob.cPrinterStop = False
-
-        Do Until pdfjob.cCountOfPrintjobs = 0
-
-        Loop
-        pdfjob.cClose()
-
-        SetDefaultPrinter(impresoraActual)
-        pdfjob = Nothing
-
-        If ExisteArchivo(sPDFPath & "\" & sPDFName) Then
-            Dim proceso As New Process
-            proceso.StartInfo.FileName = sPDFPath & "\" & sPDFName
-            proceso.StartInfo.Arguments = ""
-            proceso.Start()
-        End If
 
     End Sub
 

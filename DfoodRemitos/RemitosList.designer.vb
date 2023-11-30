@@ -63,7 +63,7 @@ Partial Class RemitosList
         Me.Label3.AutoSize = True
         Me.Label3.Location = New System.Drawing.Point(320, 23)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(106, 16)
+        Me.Label3.Size = New System.Drawing.Size(141, 21)
         Me.Label3.TabIndex = 9
         Me.Label3.Text = "Nombre Cliente"
         '
@@ -75,7 +75,7 @@ Partial Class RemitosList
         Me.cboCliente.Items.AddRange(New Object() {"NOMBRE"})
         Me.cboCliente.Location = New System.Drawing.Point(323, 42)
         Me.cboCliente.Name = "cboCliente"
-        Me.cboCliente.Size = New System.Drawing.Size(507, 24)
+        Me.cboCliente.Size = New System.Drawing.Size(507, 28)
         Me.cboCliente.TabIndex = 8
         '
         'txtCodCliente
@@ -91,7 +91,7 @@ Partial Class RemitosList
         Me.Label1.AutoSize = True
         Me.Label1.Location = New System.Drawing.Point(213, 23)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(101, 16)
+        Me.Label1.Size = New System.Drawing.Size(134, 21)
         Me.Label1.TabIndex = 6
         Me.Label1.Text = "Código Cliente"
         '
@@ -103,7 +103,7 @@ Partial Class RemitosList
         Me.cboTipoComprobante.Items.AddRange(New Object() {"NOMBRE"})
         Me.cboTipoComprobante.Location = New System.Drawing.Point(6, 42)
         Me.cboTipoComprobante.Name = "cboTipoComprobante"
-        Me.cboTipoComprobante.Size = New System.Drawing.Size(204, 24)
+        Me.cboTipoComprobante.Size = New System.Drawing.Size(204, 28)
         Me.cboTipoComprobante.TabIndex = 5
         '
         'Label2
@@ -111,7 +111,7 @@ Partial Class RemitosList
         Me.Label2.AutoSize = True
         Me.Label2.Location = New System.Drawing.Point(6, 23)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(125, 16)
+        Me.Label2.Size = New System.Drawing.Size(168, 21)
         Me.Label2.TabIndex = 4
         Me.Label2.Text = "Tipo Comprobante"
         '
@@ -153,6 +153,7 @@ Partial Class RemitosList
         DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.Flex.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
         Me.Flex.RowHeadersVisible = False
+        Me.Flex.RowHeadersWidth = 51
         DataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black
         DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
         Me.Flex.RowsDefaultCellStyle = DataGridViewCellStyle4
@@ -174,9 +175,9 @@ Partial Class RemitosList
         Me.frmBotones.Controls.Add(Me.cmdModificar)
         Me.frmBotones.Controls.Add(Me.cmdSalir)
         Me.frmBotones.Controls.Add(Me.cmdNuevo)
-        Me.frmBotones.Location = New System.Drawing.Point(553, 414)
+        Me.frmBotones.Location = New System.Drawing.Point(532, 414)
         Me.frmBotones.Name = "frmBotones"
-        Me.frmBotones.Size = New System.Drawing.Size(295, 72)
+        Me.frmBotones.Size = New System.Drawing.Size(316, 72)
         Me.frmBotones.TabIndex = 5
         Me.frmBotones.TabStop = False
         '
@@ -185,9 +186,9 @@ Partial Class RemitosList
         Me.CmdEliminar.Font = New System.Drawing.Font("Lucida Sans Unicode", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.CmdEliminar.Image = Global.BsAsRemitos.My.Resources.Resources.del_16
         Me.CmdEliminar.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.CmdEliminar.Location = New System.Drawing.Point(150, 23)
+        Me.CmdEliminar.Location = New System.Drawing.Point(165, 23)
         Me.CmdEliminar.Name = "CmdEliminar"
-        Me.CmdEliminar.Size = New System.Drawing.Size(66, 40)
+        Me.CmdEliminar.Size = New System.Drawing.Size(73, 40)
         Me.CmdEliminar.TabIndex = 7
         Me.CmdEliminar.Text = "&Eliminar"
         Me.CmdEliminar.TextAlign = System.Drawing.ContentAlignment.BottomCenter
@@ -200,7 +201,7 @@ Partial Class RemitosList
         Me.cmdModificar.ImageAlign = System.Drawing.ContentAlignment.TopCenter
         Me.cmdModificar.Location = New System.Drawing.Point(78, 23)
         Me.cmdModificar.Name = "cmdModificar"
-        Me.cmdModificar.Size = New System.Drawing.Size(66, 40)
+        Me.cmdModificar.Size = New System.Drawing.Size(81, 40)
         Me.cmdModificar.TabIndex = 4
         Me.cmdModificar.Text = "&Modificar"
         Me.cmdModificar.TextAlign = System.Drawing.ContentAlignment.BottomCenter
@@ -211,7 +212,7 @@ Partial Class RemitosList
         Me.cmdSalir.Font = New System.Drawing.Font("Lucida Sans Unicode", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmdSalir.Image = Global.BsAsRemitos.My.Resources.Resources._exit
         Me.cmdSalir.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.cmdSalir.Location = New System.Drawing.Point(222, 23)
+        Me.cmdSalir.Location = New System.Drawing.Point(244, 23)
         Me.cmdSalir.Name = "cmdSalir"
         Me.cmdSalir.Size = New System.Drawing.Size(66, 40)
         Me.cmdSalir.TabIndex = 6
@@ -235,7 +236,7 @@ Partial Class RemitosList
         'RemitosList
         '
         Me.AllowDrop = True
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(860, 489)
         Me.Controls.Add(Me.frmBotones)

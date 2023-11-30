@@ -35,4 +35,10 @@ Public Class zmain
         RemitosList.Show()
 
     End Sub
+
+    Private Sub INFORMEXFECHAXCLIENTEToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles INFORMEXFECHAXCLIENTEToolStripMenuItem.Click
+
+        InformeRemitos.Show()
+
+    End Sub
 End Class

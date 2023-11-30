@@ -120,11 +120,11 @@ Public Class RemitosList
         Flex.Columns(1).HeaderText = "idtipocomprobante"
         Flex.Columns(1).Visible = False
         Flex.Columns(2).HeaderText = "Fecha"
-        Flex.Columns(2).Width = 90
+        Flex.Columns(2).Width = 100
         Flex.Columns(3).HeaderText = "Pto Venta"
         Flex.Columns(3).Width = 100
         Flex.Columns(4).HeaderText = "Numero"
-        Flex.Columns(4).Width = 80
+        Flex.Columns(4).Width = 90
         Flex.Columns(5).HeaderText = "idcliente"
         Flex.Columns(5).Visible = False
         Flex.Columns(6).HeaderText = "Codigo"
