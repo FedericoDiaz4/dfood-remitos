@@ -113,7 +113,7 @@ Public Class ArticulosList
         Articulos.id = Flex.CurrentRow.Cells(0).Value
 
         Try
-            SQL = "SELECT codigo, descripcion FROM articulos WHERE id = " & Flex.CurrentRow.Cells(0).Value & " AND eliminado = 0"
+            SQL = "SELECT codigo, descripcion, informe FROM articulos WHERE id = " & Flex.CurrentRow.Cells(0).Value & " AND eliminado = 0"
             Dim comando As New MySqlCommand(SQL, conexion)
             Dim rsModificar As MySqlDataReader
 
@@ -122,6 +122,11 @@ Public Class ArticulosList
                 Articulos.txtCodigo.Text = rsModificar("codigo").ToString
                 Articulos.txtCodigo.Enabled = False
                 Articulos.txtDescripcion.Text = rsModificar("descripcion").ToString
+                If (rsModificar("informe") = 1) Then
+                    Articulos.ChkSaleEnInforme.Checked = True
+                Else
+                    Articulos.ChkSaleEnInforme.Checked = False
+                End If
             End If
 
             rsModificar.Close()

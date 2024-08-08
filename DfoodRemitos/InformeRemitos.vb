@@ -43,47 +43,50 @@ Public Class InformeRemitos
             Dim codigosSinUsar = New Integer() {7, 8, 12, 13, 14, 18, 19, 20}
             rsRemito = comando.ExecuteReader
             Do While rsRemito.Read()
-                If (vuelta = 1) Then
-                    hoja_trabajo.Cells(fila, 1) = "REMITO N° " + rsRemito("numerocomprobante")
-                    hoja_trabajo.Cells(fila, 2) = rsRemito("fecha")
-                    hoja_trabajo.Cells(fila, 3) = rsRemito("nombre")
-                    fila += 1
-                End If
-
-                Dim cantidad As Integer = 0
                 Dim sql1 As String
-                sql1 = "SELECT a.codigo, rd.art, rd.cantidad FROM remitosd as rd "
+                sql1 = "SELECT a.codigo, rd.art, rd.cantidad, a.informe FROM remitosd as rd "
                 sql1 &= "INNER JOIN articulos AS a ON rd.idart = a.id "
-                sql1 &= "WHERE idremito = " & rsRemito("id")
+                sql1 &= "WHERE idremito = " & rsRemito("id") & " AND a.informe = 1 "
                 conexionBis.ConnectionString = cadenaConexion
                 conexionBis.Open()
                 Dim comando1 As New MySqlCommand(sql1, conexionBis)
                 Dim rsRemitoD As MySqlDataReader
                 rsRemitoD = comando1.ExecuteReader
-                Do While rsRemitoD.Read
+                If rsRemitoD.HasRows Then
                     If (vuelta = 1) Then
-                        hoja_trabajo.Cells(fila, 1) = "Codigo"
-                        hoja_trabajo.Cells(fila, 2) = "Nombre"
-                        hoja_trabajo.Cells(fila, 3) = "Cantidad"
-                        vuelta += 1
+                        hoja_trabajo.Cells(fila, 1) = "REMITO N° " + rsRemito("numerocomprobante")
+                        hoja_trabajo.Cells(fila, 2) = rsRemito("fecha")
+                        hoja_trabajo.Cells(fila, 3) = rsRemito("nombre")
                         fila += 1
                     End If
-                    If Not codigosSinUsar.Contains(rsRemitoD("codigo")) Then
-                        hoja_trabajo.Cells(fila, 1) = rsRemitoD("codigo")
-                        hoja_trabajo.Cells(fila, 2) = rsRemitoD("art")
-                        hoja_trabajo.Cells(fila, 3) = rsRemitoD("cantidad")
-                        fila += 1
-                        cantidad += rsRemitoD("cantidad")
-                    End If
-                Loop
-                conexionBis.Close()
-                hoja_trabajo.Cells(fila, 2) = "TOTAL: "
-                hoja_trabajo.Cells(fila, 3) = cantidad
-                cantidadTotal += cantidad
-                fila += 1
-                cantidad = 0
-                vuelta = 1
-                fila += 1
+                    Dim cantidad As Integer = 0
+                    Do While rsRemitoD.Read
+                        If (vuelta = 1) Then
+                            hoja_trabajo.Cells(fila, 1) = "Codigo"
+                            hoja_trabajo.Cells(fila, 2) = "Nombre"
+                            hoja_trabajo.Cells(fila, 3) = "Cantidad"
+                            vuelta += 1
+                            fila += 1
+                        End If
+                        If Not codigosSinUsar.Contains(rsRemitoD("codigo")) Then
+                            hoja_trabajo.Cells(fila, 1) = rsRemitoD("codigo")
+                            hoja_trabajo.Cells(fila, 2) = rsRemitoD("art")
+                            hoja_trabajo.Cells(fila, 3) = rsRemitoD("cantidad")
+                            fila += 1
+                            cantidad += rsRemitoD("cantidad")
+                        End If
+                    Loop
+                    conexionBis.Close()
+                    hoja_trabajo.Cells(fila, 2) = "TOTAL: "
+                    hoja_trabajo.Cells(fila, 3) = cantidad
+                    cantidadTotal += cantidad
+                    fila += 1
+                    cantidad = 0
+                    vuelta = 1
+                    fila += 1
+                Else
+                    conexionBis.Close()
+                End If
             Loop
 
             hoja_trabajo.Cells(fila, 2) = "TOTAL GENERAL: "

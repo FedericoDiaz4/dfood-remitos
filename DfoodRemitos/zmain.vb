@@ -41,4 +41,10 @@ Public Class zmain
         InformeRemitos.Show()
 
     End Sub
+
+    Private Sub INFORMEREMITOSToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles INFORMEREMITOSToolStripMenuItem.Click
+
+        InformeEncabezadoRemitos.Show()
+
+    End Sub
 End Class

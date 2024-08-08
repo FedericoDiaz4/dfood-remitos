@@ -84,9 +84,9 @@ Public Class Articulos
 
             End Try
 
-            SQL = "INSERT INTO articulos(codigo, descripcion) VALUES (@codigo, @descripcion) "
+            SQL = "INSERT INTO articulos(codigo, descripcion, informe) VALUES (@codigo, @descripcion, @informe) "
         Else
-            SQL = "UPDATE articulos SET codigo = @codigo, descripcion = @descripcion WHERE id = " & id
+            SQL = "UPDATE articulos SET codigo = @codigo, descripcion = @descripcion, informe = @informe WHERE id = " & id
         End If
         Try
             Dim comando = New MySqlCommand(SQL, conexion) With {
@@ -94,6 +94,12 @@ Public Class Articulos
             }
             comando.Parameters.AddWithValue("@codigo", txtCodigo.Text).ToString()
             comando.Parameters.AddWithValue("@descripcion", txtDescripcion.Text).ToString()
+            If (ChkSaleEnInforme.Checked) Then
+                comando.Parameters.AddWithValue("@informe", 1)
+            Else
+                comando.Parameters.AddWithValue("@informe", 0)
+            End If
+
             comando.ExecuteNonQuery()
             comando.Dispose()
 

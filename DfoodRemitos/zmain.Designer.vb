@@ -29,10 +29,11 @@ Partial Class zmain
         Me.CLIENTESToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ARTICULOSToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.REMITOSToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.SALIRToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolTip = New System.Windows.Forms.ToolTip(Me.components)
         Me.INFORMESToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.INFORMEXFECHAXCLIENTEToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SALIRToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolTip = New System.Windows.Forms.ToolTip(Me.components)
+        Me.INFORMEREMITOSToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -57,13 +58,13 @@ Partial Class zmain
         'CLIENTESToolStripMenuItem
         '
         Me.CLIENTESToolStripMenuItem.Name = "CLIENTESToolStripMenuItem"
-        Me.CLIENTESToolStripMenuItem.Size = New System.Drawing.Size(224, 26)
+        Me.CLIENTESToolStripMenuItem.Size = New System.Drawing.Size(166, 26)
         Me.CLIENTESToolStripMenuItem.Text = "&CLIENTES"
         '
         'ARTICULOSToolStripMenuItem
         '
         Me.ARTICULOSToolStripMenuItem.Name = "ARTICULOSToolStripMenuItem"
-        Me.ARTICULOSToolStripMenuItem.Size = New System.Drawing.Size(224, 26)
+        Me.ARTICULOSToolStripMenuItem.Size = New System.Drawing.Size(166, 26)
         Me.ARTICULOSToolStripMenuItem.Text = "&ARTICULOS"
         '
         'REMITOSToolStripMenuItem
@@ -72,15 +73,9 @@ Partial Class zmain
         Me.REMITOSToolStripMenuItem.Size = New System.Drawing.Size(83, 24)
         Me.REMITOSToolStripMenuItem.Text = "&REMITOS"
         '
-        'SALIRToolStripMenuItem
-        '
-        Me.SALIRToolStripMenuItem.Name = "SALIRToolStripMenuItem"
-        Me.SALIRToolStripMenuItem.Size = New System.Drawing.Size(61, 24)
-        Me.SALIRToolStripMenuItem.Text = "&SALIR"
-        '
         'INFORMESToolStripMenuItem
         '
-        Me.INFORMESToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.INFORMEXFECHAXCLIENTEToolStripMenuItem})
+        Me.INFORMESToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.INFORMEXFECHAXCLIENTEToolStripMenuItem, Me.INFORMEREMITOSToolStripMenuItem})
         Me.INFORMESToolStripMenuItem.Name = "INFORMESToolStripMenuItem"
         Me.INFORMESToolStripMenuItem.Size = New System.Drawing.Size(94, 24)
         Me.INFORMESToolStripMenuItem.Text = "&INFORMES"
@@ -90,6 +85,18 @@ Partial Class zmain
         Me.INFORMEXFECHAXCLIENTEToolStripMenuItem.Name = "INFORMEXFECHAXCLIENTEToolStripMenuItem"
         Me.INFORMEXFECHAXCLIENTEToolStripMenuItem.Size = New System.Drawing.Size(289, 26)
         Me.INFORMEXFECHAXCLIENTEToolStripMenuItem.Text = "&INFORME X FECHA X CLIENTE"
+        '
+        'SALIRToolStripMenuItem
+        '
+        Me.SALIRToolStripMenuItem.Name = "SALIRToolStripMenuItem"
+        Me.SALIRToolStripMenuItem.Size = New System.Drawing.Size(61, 24)
+        Me.SALIRToolStripMenuItem.Text = "&SALIR"
+        '
+        'INFORMEREMITOSToolStripMenuItem
+        '
+        Me.INFORMEREMITOSToolStripMenuItem.Name = "INFORMEREMITOSToolStripMenuItem"
+        Me.INFORMEREMITOSToolStripMenuItem.Size = New System.Drawing.Size(289, 26)
+        Me.INFORMEREMITOSToolStripMenuItem.Text = "&INFORME REMITOS"
         '
         'zmain
         '
@@ -122,4 +129,5 @@ Partial Class zmain
     Friend WithEvents REMITOSToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents INFORMESToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents INFORMEXFECHAXCLIENTEToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents INFORMEREMITOSToolStripMenuItem As ToolStripMenuItem
 End Class

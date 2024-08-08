@@ -28,6 +28,7 @@ Partial Class Articulos
         Me.txtDescripcion = New System.Windows.Forms.TextBox()
         Me.cmdSalir = New System.Windows.Forms.Button()
         Me.CmdGuardar = New System.Windows.Forms.Button()
+        Me.ChkSaleEnInforme = New System.Windows.Forms.CheckBox()
         Me.SuspendLayout()
         '
         'lblCodigo
@@ -36,7 +37,7 @@ Partial Class Articulos
         Me.lblCodigo.Font = New System.Drawing.Font("Lucida Sans Unicode", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblCodigo.Location = New System.Drawing.Point(12, 9)
         Me.lblCodigo.Name = "lblCodigo"
-        Me.lblCodigo.Size = New System.Drawing.Size(48, 16)
+        Me.lblCodigo.Size = New System.Drawing.Size(63, 18)
         Me.lblCodigo.TabIndex = 0
         Me.lblCodigo.Text = "Codigo"
         '
@@ -46,7 +47,7 @@ Partial Class Articulos
         Me.lblNombre.Font = New System.Drawing.Font("Lucida Sans Unicode", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblNombre.Location = New System.Drawing.Point(86, 9)
         Me.lblNombre.Name = "lblNombre"
-        Me.lblNombre.Size = New System.Drawing.Size(75, 16)
+        Me.lblNombre.Size = New System.Drawing.Size(94, 18)
         Me.lblNombre.TabIndex = 1
         Me.lblNombre.Text = "Descripcion"
         '
@@ -54,14 +55,14 @@ Partial Class Articulos
         '
         Me.txtCodigo.Location = New System.Drawing.Point(15, 28)
         Me.txtCodigo.Name = "txtCodigo"
-        Me.txtCodigo.Size = New System.Drawing.Size(65, 27)
+        Me.txtCodigo.Size = New System.Drawing.Size(65, 32)
         Me.txtCodigo.TabIndex = 3
         '
         'txtDescripcion
         '
         Me.txtDescripcion.Location = New System.Drawing.Point(86, 28)
         Me.txtDescripcion.Name = "txtDescripcion"
-        Me.txtDescripcion.Size = New System.Drawing.Size(513, 27)
+        Me.txtDescripcion.Size = New System.Drawing.Size(513, 32)
         Me.txtDescripcion.TabIndex = 4
         '
         'cmdSalir
@@ -69,7 +70,7 @@ Partial Class Articulos
         Me.cmdSalir.Font = New System.Drawing.Font("Lucida Sans Unicode", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmdSalir.Image = Global.BsAsRemitos.My.Resources.Resources._exit
         Me.cmdSalir.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.cmdSalir.Location = New System.Drawing.Point(538, 61)
+        Me.cmdSalir.Location = New System.Drawing.Point(538, 80)
         Me.cmdSalir.Name = "cmdSalir"
         Me.cmdSalir.Size = New System.Drawing.Size(61, 40)
         Me.cmdSalir.TabIndex = 18
@@ -82,7 +83,7 @@ Partial Class Articulos
         Me.CmdGuardar.Font = New System.Drawing.Font("Lucida Sans Unicode", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.CmdGuardar.Image = Global.BsAsRemitos.My.Resources.Resources.save_16
         Me.CmdGuardar.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.CmdGuardar.Location = New System.Drawing.Point(471, 61)
+        Me.CmdGuardar.Location = New System.Drawing.Point(471, 80)
         Me.CmdGuardar.Name = "CmdGuardar"
         Me.CmdGuardar.Size = New System.Drawing.Size(61, 40)
         Me.CmdGuardar.TabIndex = 17
@@ -90,11 +91,22 @@ Partial Class Articulos
         Me.CmdGuardar.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.CmdGuardar.UseVisualStyleBackColor = True
         '
+        'ChkSaleEnInforme
+        '
+        Me.ChkSaleEnInforme.AutoSize = True
+        Me.ChkSaleEnInforme.Location = New System.Drawing.Point(15, 66)
+        Me.ChkSaleEnInforme.Name = "ChkSaleEnInforme"
+        Me.ChkSaleEnInforme.Size = New System.Drawing.Size(161, 25)
+        Me.ChkSaleEnInforme.TabIndex = 19
+        Me.ChkSaleEnInforme.Text = "Sale en Informe"
+        Me.ChkSaleEnInforme.UseVisualStyleBackColor = True
+        '
         'Articulos
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(611, 112)
+        Me.ClientSize = New System.Drawing.Size(611, 132)
+        Me.Controls.Add(Me.ChkSaleEnInforme)
         Me.Controls.Add(Me.CmdGuardar)
         Me.Controls.Add(Me.cmdSalir)
         Me.Controls.Add(Me.txtDescripcion)
@@ -119,4 +131,5 @@ Partial Class Articulos
     Friend WithEvents txtDescripcion As TextBox
     Friend WithEvents cmdSalir As Button
     Friend WithEvents CmdGuardar As Button
+    Friend WithEvents ChkSaleEnInforme As CheckBox
 End Class

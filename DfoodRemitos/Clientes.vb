@@ -42,20 +42,26 @@ Public Class Clientes
 
         'Validaciones
         If txtCodigo.Text = "" Then
-            Call MsgBox("Falta ingresar codigo de cliente", vbCritical, "Falta Usuario")
+            Call MsgBox("Falta ingresar codigo de cliente", vbCritical, "Falta codigo")
             txtCodigo.Select()
             Exit Sub
         End If
 
         If txtNombre.Text = "" Then
-            Call MsgBox("Falta ingresar nombre de cliente", vbCritical, "Falta contraseña")
+            Call MsgBox("Falta ingresar nombre de cliente", vbCritical, "Falta nombre")
             txtNombre.Select()
             Exit Sub
         End If
 
         If txtCuit.Text = "" Then
-            Call MsgBox("Falta ingresar CUIT de cliente", vbCritical, "Falta contraseña")
+            Call MsgBox("Falta ingresar CUIT de cliente", vbCritical, "Falta cuit")
             txtCuit.Select()
+            Exit Sub
+        End If
+
+        If (cboTipoDocumento.SelectedIndex = -1) Then
+            Call MsgBox("Falta ingresar Tipo de documento del cliente", vbCritical, "Falta tipo documento")
+            cboTipoDocumento.Select()
             Exit Sub
         End If
 
