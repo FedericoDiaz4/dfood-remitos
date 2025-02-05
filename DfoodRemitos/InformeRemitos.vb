@@ -77,6 +77,7 @@ Public Class InformeRemitos
                         End If
                     Loop
                     conexionBis.Close()
+                    hoja_trabajo.Cells(fila, 1) = rsRemito("fecha")
                     hoja_trabajo.Cells(fila, 2) = "TOTAL: "
                     hoja_trabajo.Cells(fila, 3) = cantidad
                     cantidadTotal += cantidad
