@@ -12,8 +12,9 @@ Module Module1
 
     Public conexion As New MySqlConnection()
     Public conexionBis As New MySqlConnection()
-    Public Const cadenaConexion As String = "SERVER=gloria-pc; PORT=3306; DataBase=dfoodremitos; Uid=root; Pwd=cmsis00; Convert Zero Datetime=True; "
+    'Public Const cadenaConexion As String = "SERVER=gloria-pc; PORT=3306; DataBase=dfoodremitos; Uid=root; Pwd=cmsis00; Convert Zero Datetime=True; "
     'Public Const cadenaConexion As String = "SERVER=localhost; PORT=3307; DataBase=dfoodremitos; Uid=root; Pwd=cmsis00; Convert Zero Datetime=True; SslMode = 0;"
+    Public Const cadenaConexion As String = "SERVER=servidor; PORT=3306; DataBase=dfoodremitos; Uid=root; Pwd=cmsis00; Convert Zero Datetime=True; "
     Public SQL As String
     Public nTmp As String
     Private Declare Function ShellExecute Lib "shell32.dll" Alias "ShellExecuteA" (ByVal hwnd As Long, ByVal lpOperation As String, ByVal lpFile As String, ByVal lpParameters As String, ByVal lpDirectory As String, ByVal nShowCmd As Long) As Long
