@@ -40,7 +40,7 @@ Public Class InformeRemitos
             Dim fila As Integer = 3
             Dim vuelta As Integer = 1
             Dim cantidadTotal As Integer = 0
-            Dim codigosSinUsar = New Integer() {7, 8, 12, 13, 14, 18, 19, 20}
+            'Dim codigosSinUsar = New Integer() {7, 8, 12, 13, 14, 18, 19, 20}
             rsRemito = comando.ExecuteReader
             Do While rsRemito.Read()
                 Dim sql1 As String
@@ -68,13 +68,13 @@ Public Class InformeRemitos
                             vuelta += 1
                             fila += 1
                         End If
-                        If Not codigosSinUsar.Contains(rsRemitoD("codigo")) Then
-                            hoja_trabajo.Cells(fila, 1) = rsRemitoD("codigo")
-                            hoja_trabajo.Cells(fila, 2) = rsRemitoD("art")
-                            hoja_trabajo.Cells(fila, 3) = rsRemitoD("cantidad")
-                            fila += 1
-                            cantidad += rsRemitoD("cantidad")
-                        End If
+                        'If Not codigosSinUsar.Contains(rsRemitoD("codigo")) Then
+                        hoja_trabajo.Cells(fila, 1) = rsRemitoD("codigo")
+                        hoja_trabajo.Cells(fila, 2) = rsRemitoD("art")
+                        hoja_trabajo.Cells(fila, 3) = rsRemitoD("cantidad")
+                        fila += 1
+                        cantidad += rsRemitoD("cantidad")
+                        'End If
                     Loop
                     conexionBis.Close()
                     hoja_trabajo.Cells(fila, 1) = rsRemito("fecha")
