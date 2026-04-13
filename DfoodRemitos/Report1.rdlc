@@ -6,13 +6,13 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>2.52646cm</Width>
+              <Width>2.50645cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.20249cm</Width>
+              <Width>0.07938cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>14.82313cm</Width>
+              <Width>16.96626cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -51,21 +51,21 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox32">
+                    <Textbox Name="Textbox1">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Codigo</Value>
+                              <Value />
                               <Style />
                             </TextRun>
                           </TextRuns>
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox32</rd:DefaultName>
+                      <rd:DefaultName>Textbox1</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -155,7 +155,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!codigo.Value</Value>
+                              <Value />
                               <Style />
                             </TextRun>
                           </TextRuns>

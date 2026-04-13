@@ -676,9 +676,9 @@ Public Class Remitos
                 If Not row Is Nothing Then
                     Dim detalle As New detalleRemito
                     If (row.Cells(3).Value.ToString() = "") Then
-                        detalle.codigo = "X"
+                        detalle.codigo = ""
                     Else
-                        detalle.codigo = row.Cells(3).Value
+                        detalle.codigo = ""
                     End If
                     detalle.art = row.Cells(4).Value
                     detalle.cantidad = row.Cells(5).Value
@@ -703,7 +703,7 @@ Public Class Remitos
                             </DeviceInfo>"
 
         Dim bytes = Form1.ReportViewer1.LocalReport.Render("PDF", deviceInfo)
-        Dim ruta = "\\server\c\REMITOS SISTEMA\RE-" & Format(CInt(cboPtoVenta.Text), "0000") & "-" & Format(CInt(txtNumComprobante.Text), "00000000") & ".pdf"
+        Dim ruta = "\\servidor\Datos\Remitos\RE-" & Format(CInt(cboPtoVenta.Text), "0000") & "-" & Format(CInt(txtNumComprobante.Text), "00000000") & ".pdf"
         'Dim ruta = "C:\Cmsis\Remitos\RE-" & Format(CInt(cboPtoVenta.Text), "0000") & "-" & Format(CInt(txtNumComprobante.Text), "00000000") & ".pdf"
         'Dim ruta = "c:\fe\RE-" & Format(CInt(cboPtoVenta.Text), "0000") & "-" & Format(CInt(txtNumComprobante.Text), "00000000") & ".pdf"
 
@@ -830,7 +830,7 @@ Public Class Remitos
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
 
-        Dim ruta = "\\server\c\REMITOS SISTEMA\RE-" & Format(CInt(cboPtoVenta.Text), "0000") & "-" & Format(CInt(txtNumComprobante.Text), "00000000") & ".pdf"
+        Dim ruta = "\\servidor\Datos\Remitos\RE-" & Format(CInt(cboPtoVenta.Text), "0000") & "-" & Format(CInt(txtNumComprobante.Text), "00000000") & ".pdf"
         'Dim ruta = "c:\fe\RE-" & Format(CInt(cboPtoVenta.Text), "0000") & "-" & Format(CInt(txtNumComprobante.Text), "00000000") & ".pdf"
         'Dim ruta = "C:\Cmsis\Remitos\RE-" & Format(CInt(cboPtoVenta.Text), "0000") & "-" & Format(CInt(txtNumComprobante.Text), "00000000") & ".pdf"
 
