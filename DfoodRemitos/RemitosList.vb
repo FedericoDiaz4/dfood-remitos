@@ -64,7 +64,7 @@ Public Class RemitosList
 
     Private Sub cmdModificar_Click(sender As Object, e As EventArgs) Handles cmdModificar.Click
 
-        If IsNothing(Flex.CurrentRow.Cells(0).Value) Then
+        If Flex.CurrentRow Is Nothing OrElse IsNothing(Flex.CurrentRow.Cells(0).Value) Then
             Exit Sub
         End If
 
@@ -204,6 +204,8 @@ Public Class RemitosList
 
         End Try
 
+        Cargar()
+
     End Sub
 
     Private Sub cboCliente_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboCliente.SelectedIndexChanged
@@ -216,9 +218,13 @@ Public Class RemitosList
 
     Private Sub CmdEliminar_Click(sender As Object, e As EventArgs) Handles CmdEliminar.Click
 
-        If IsNothing(Flex.CurrentRow.Cells(0).Value) Then
+        If Flex.CurrentRow Is Nothing OrElse IsNothing(Flex.CurrentRow.Cells(0).Value) Then
             Exit Sub
         End If
+
+        Select Case MsgBox("¿DESEA ELIMINAR EL REMITO " & Flex.CurrentRow.Cells(3).Value & " - " & Flex.CurrentRow.Cells(4).Value & "?", vbYesNo Or vbQuestion Or vbDefaultButton2)
+            Case vbNo : Exit Sub
+        End Select
 
         Try
             SQL = "UPDATE Remitos SET eliminado = 1 WHERE id = " & Flex.CurrentRow.Cells(0).Value

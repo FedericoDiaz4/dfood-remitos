@@ -138,6 +138,12 @@ Public Class Remitos
         End If
 
         If txtCantidad.Text = "0" Then
+            If Not ModificandoArticulo Or Flex.CurrentRow Is Nothing Then
+                MsgBox("La cantidad debe ser mayor a cero. Para eliminar un item, selecciónelo en la grilla y ponga cantidad 0.", vbExclamation)
+                txtCantidad.Focus()
+                Exit Sub
+            End If
+
             Select Case MsgBox("¿Desea eliminar el item " & Flex.CurrentRow.Cells(3).Value & "?", vbYesNo Or vbExclamation Or vbDefaultButton1)
                 Case vbNo : Exit Sub
             End Select
@@ -165,6 +171,19 @@ Public Class Remitos
             txtCantidad.Text = ""
             txtCodArt.Focus()
 
+            Exit Sub
+        End If
+
+        'El código 0 es para artículos de texto libre
+        If txtCodArt.Text = "0" Then
+            If txtArticulo.Text = "" Then
+                MsgBox("Falta ingresar la descripción del artículo.", vbExclamation)
+                txtArticulo.Focus()
+                Exit Sub
+            End If
+        ElseIf idart <= 0 Then
+            MsgBox("El código de artículo " & txtCodArt.Text & " no existe.", vbExclamation)
+            txtCodArt.Focus()
             Exit Sub
         End If
 
@@ -374,14 +393,17 @@ Public Class Remitos
             Exit Sub
         End If
 
-        If IsNothing(Flex.CurrentRow.Cells(0).Value) Then
+        If Flex.CurrentRow Is Nothing OrElse IsNothing(Flex.CurrentRow.Cells(0).Value) Then
             Exit Sub
         End If
 
         ModificandoArticulo = True
         idArticuloSeleccionado = Flex.CurrentRow.Cells(0).Value
-        txtCodArt.Text = Flex.CurrentRow.Cells(3).Value
-        cboArticulo.Text = Flex.CurrentRow.Cells(4).Value
+        'Los items de texto libre no tienen código de artículo
+        txtCodArt.Text = Flex.CurrentRow.Cells(3).Value.ToString
+        If txtCodArt.Text = "" Then txtCodArt.Text = "0"
+        cboArticulo.Text = Flex.CurrentRow.Cells(4).Value.ToString
+        If txtCodArt.Text = "0" Then txtArticulo.Text = Flex.CurrentRow.Cells(4).Value.ToString
         txtCantidad.Text = Flex.CurrentRow.Cells(5).Value
         txtCantidad.Focus()
 
@@ -419,7 +441,7 @@ Public Class Remitos
             txtArticulo.Text = ""
         End If
 
-        SQL = "SELECT id, codigo, descripcion FROM articulos WHERE codigo = '" & txtCodArt.Text & "' and eliminado = 0"
+        SQL = "SELECT id, codigo, descripcion FROM articulos WHERE codigo = '" & MySqlHelper.EscapeString(txtCodArt.Text) & "' and eliminado = 0"
         Try
             Dim comando As New MySqlCommand(SQL, conexion)
             Dim rsCargar As MySqlDataReader
@@ -698,9 +720,16 @@ Public Class Remitos
         'Dim ruta = "C:\Cmsis\Remitos\RE-" & Format(CInt(cboPtoVenta.Text), "0000") & "-" & Format(CInt(txtNumComprobante.Text), "00000000") & ".pdf"
         'Dim ruta = "c:\fe\RE-" & Format(CInt(cboPtoVenta.Text), "0000") & "-" & Format(CInt(txtNumComprobante.Text), "00000000") & ".pdf"
 
-        Dim archivo = New FileStream(ruta, FileMode.Create)
-        archivo.Write(bytes, 0, bytes.Length)
-        archivo.Close()
+        Try
+            Using archivo As New FileStream(ruta, FileMode.Create)
+                archivo.Write(bytes, 0, bytes.Length)
+            End Using
+
+        Catch ex As Exception
+            MsgBox("No se pudo guardar el PDF en " & ruta & vbCrLf & vbCrLf & "Verifique que no esté abierto y que el servidor esté accesible." & vbCrLf & vbCrLf & ex.Message, vbExclamation)
+            Exit Sub
+
+        End Try
 
         Timer1.Interval = 1500
         Timer1.Enabled = True

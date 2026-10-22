@@ -16,7 +16,7 @@ Public Class ClientesList
 
         SQL = "SELECT id, codigo, nombre, numerodocumento, telefono FROM Clientes WHERE eliminado = 0 "
         If txtBuscar.Text <> "" Then
-            SQL = SQL & " AND " & cboBuscar.Text & " LIKE '" & txtBuscar.Text & "%'"
+            SQL = SQL & " AND " & cboBuscar.Text & " LIKE '" & MySqlHelper.EscapeString(txtBuscar.Text) & "%'"
         End If
         SQL = SQL & " ORDER BY " & cboBuscar.Text
 
@@ -54,7 +54,7 @@ Public Class ClientesList
 
     Private Sub CmdEliminar_Click(sender As Object, e As EventArgs) Handles cmdEliminar.Click
 
-        If IsNothing(Flex.CurrentRow.Cells(0).Value) Then
+        If Flex.CurrentRow Is Nothing OrElse IsNothing(Flex.CurrentRow.Cells(0).Value) Then
             Exit Sub
         End If
 
@@ -105,7 +105,7 @@ Public Class ClientesList
 
     Private Sub CmdModificar_Click(sender As Object, e As EventArgs) Handles cmdModificar.Click
 
-        If IsNothing(Flex.CurrentRow.Cells(0).Value) Then
+        If Flex.CurrentRow Is Nothing OrElse IsNothing(Flex.CurrentRow.Cells(0).Value) Then
             Exit Sub
         End If
 

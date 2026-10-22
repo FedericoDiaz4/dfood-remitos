@@ -19,7 +19,7 @@ Public Class ArticulosList
 
         SQL = "SELECT id, codigo, descripcion, eliminado FROM articulos WHERE eliminado = 0 "
         If txtBuscar.Text <> "" Then
-            SQL = SQL & " And " & cboBuscar.Text & " Like '%" & txtBuscar.Text & "%'"
+            SQL = SQL & " And " & cboBuscar.Text & " Like '%" & MySqlHelper.EscapeString(txtBuscar.Text) & "%'"
         End If
         SQL = SQL & " ORDER BY " & cboBuscar.Text
 
@@ -55,7 +55,7 @@ Public Class ArticulosList
 
     Private Sub CmdEliminar_Click(sender As Object, e As EventArgs) Handles cmdEliminar.Click
 
-        If IsNothing(Flex.CurrentRow.Cells(0).Value) Then
+        If Flex.CurrentRow Is Nothing OrElse IsNothing(Flex.CurrentRow.Cells(0).Value) Then
             Exit Sub
         End If
 
@@ -105,7 +105,7 @@ Public Class ArticulosList
 
         Dim ArrBajas(-1) As Integer
 
-        If IsNothing(Flex.CurrentRow.Cells(0).Value) Then
+        If Flex.CurrentRow Is Nothing OrElse IsNothing(Flex.CurrentRow.Cells(0).Value) Then
             Exit Sub
         End If
 
@@ -152,7 +152,7 @@ Public Class ArticulosList
 
         If entrada = "REMITO" Then
 
-            If IsNothing(Flex.CurrentRow.Cells(0).Value) Then
+            If Flex.CurrentRow Is Nothing OrElse IsNothing(Flex.CurrentRow.Cells(0).Value) Then
                 Exit Sub
             End If
 
@@ -169,7 +169,7 @@ Public Class ArticulosList
 
         If e.KeyChar = vbCr AND entrada = "REMITO" Then
 
-            If IsNothing(Flex.CurrentRow.Cells(0).Value) Then
+            If Flex.CurrentRow Is Nothing OrElse IsNothing(Flex.CurrentRow.Cells(0).Value) Then
                 Exit Sub
             End If
 

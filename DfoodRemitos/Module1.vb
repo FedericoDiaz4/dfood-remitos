@@ -37,6 +37,10 @@ Module Module1
     Sub AbrirConexionBis()
 
         Try
+            'Si quedó abierta por un error anterior, la cierro antes de reabrirla
+            If conexionBis.State <> ConnectionState.Closed Then
+                conexionBis.Close()
+            End If
             conexionBis.ConnectionString = cadenaConexion
             conexionBis.Open()
 

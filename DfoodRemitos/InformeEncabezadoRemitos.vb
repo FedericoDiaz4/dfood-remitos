@@ -23,6 +23,7 @@ Public Class InformeEncabezadoRemitos
         hoja_trabajo.Cells(3, 1) = "Remito"
         hoja_trabajo.Cells(3, 2) = "Fecha"
         hoja_trabajo.Cells(3, 3) = "Cliente"
+        Dim rsRemito As MySqlDataReader = Nothing
         Try
             SQL = "SELECT r.id, r.numerocomprobante, r.idcliente, r.fecha, c.codigo, c.nombre FROM remitos as r "
             SQL &= "INNER JOIN clientes AS c ON c.id = r.idcliente "
@@ -30,7 +31,6 @@ Public Class InformeEncabezadoRemitos
             SQL &= " AND r.eliminado = 0"
             SQL &= " ORDER BY fecha"
             Dim comando As New MySqlCommand(SQL, conexion)
-            Dim rsRemito As MySqlDataReader
             Dim fila As Integer = 4
             Dim cantidadRemitos As Integer = 0
             rsRemito = comando.ExecuteReader
@@ -48,6 +48,10 @@ Public Class InformeEncabezadoRemitos
             comando.Dispose()
             aplicacion.Visible = True
         Catch ex As Exception
+            'Libero la conexión y cierro el Excel oculto para no dejarlos colgados
+            If rsRemito IsNot Nothing Then rsRemito.Close()
+            aplicacion.DisplayAlerts = False
+            aplicacion.Quit()
             MsgBox(ex.Message)
             Exit Sub
 

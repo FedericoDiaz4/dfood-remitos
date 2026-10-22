@@ -26,6 +26,7 @@ Public Class InformeRemitos
         'aplicacion.Visible = True
 
         hoja_trabajo.Cells(1, 1) = "Informe Remitos"
+        Dim rsRemito As MySqlDataReader = Nothing
         Try
             SQL = "SELECT r.id, r.numerocomprobante, r.idcliente, r.fecha, c.codigo, c.nombre FROM remitos as r "
             SQL &= "INNER JOIN clientes AS c ON c.id = r.idcliente "
@@ -36,7 +37,6 @@ Public Class InformeRemitos
             End If
             SQL &= " ORDER BY fecha"
             Dim comando As New MySqlCommand(SQL, conexion)
-            Dim rsRemito As MySqlDataReader
             Dim fila As Integer = 3
             Dim vuelta As Integer = 1
             Dim cantidadTotal As Double = 0
@@ -99,6 +99,11 @@ Public Class InformeRemitos
             comando.Dispose()
             aplicacion.Visible = True
         Catch ex As Exception
+            'Libero conexiones y cierro el Excel oculto para no dejarlos colgados
+            If rsRemito IsNot Nothing Then rsRemito.Close()
+            If conexionBis.State <> ConnectionState.Closed Then conexionBis.Close()
+            aplicacion.DisplayAlerts = False
+            aplicacion.Quit()
             MsgBox(ex.Message)
             Exit Sub
 
