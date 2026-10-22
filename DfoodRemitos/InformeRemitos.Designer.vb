@@ -29,6 +29,7 @@ Partial Class InformeRemitos
         Me.Label3 = New System.Windows.Forms.Label()
         Me.CboClientes = New System.Windows.Forms.ComboBox()
         Me.cmdOk = New System.Windows.Forms.Button()
+        Me.ChkExcluirGaseosas = New System.Windows.Forms.CheckBox()
         Me.SuspendLayout()
         '
         'DtpHasta
@@ -103,11 +104,22 @@ Partial Class InformeRemitos
         Me.cmdOk.TabIndex = 23
         Me.cmdOk.UseVisualStyleBackColor = True
         '
+        'ChkExcluirGaseosas
+        '
+        Me.ChkExcluirGaseosas.AutoSize = True
+        Me.ChkExcluirGaseosas.Location = New System.Drawing.Point(13, 76)
+        Me.ChkExcluirGaseosas.Name = "ChkExcluirGaseosas"
+        Me.ChkExcluirGaseosas.Size = New System.Drawing.Size(171, 25)
+        Me.ChkExcluirGaseosas.TabIndex = 28
+        Me.ChkExcluirGaseosas.Text = "Excluir gaseosas"
+        Me.ChkExcluirGaseosas.UseVisualStyleBackColor = True
+        '
         'InformeRemitos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 21.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(823, 91)
+        Me.ClientSize = New System.Drawing.Size(823, 115)
+        Me.Controls.Add(Me.ChkExcluirGaseosas)
         Me.Controls.Add(Me.DtpHasta)
         Me.Controls.Add(Me.DtpDesde)
         Me.Controls.Add(Me.label2)
@@ -131,4 +143,5 @@ Partial Class InformeRemitos
     Friend WithEvents cmdOk As Button
     Friend WithEvents Label3 As Label
     Friend WithEvents CboClientes As ComboBox
+    Friend WithEvents ChkExcluirGaseosas As CheckBox
 End Class

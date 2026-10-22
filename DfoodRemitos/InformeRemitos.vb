@@ -47,6 +47,9 @@ Public Class InformeRemitos
                 sql1 = "SELECT a.codigo, rd.art, rd.cantidad, a.informe FROM remitosd as rd "
                 sql1 &= "INNER JOIN articulos AS a ON rd.idart = a.id "
                 sql1 &= "WHERE idremito = " & rsRemito("id") & " AND a.informe = 1 "
+                If ChkExcluirGaseosas.Checked Then
+                    sql1 &= "AND a.gaseosa = 0 "
+                End If
                 conexionBis.ConnectionString = cadenaConexion
                 conexionBis.Open()
                 Dim comando1 As New MySqlCommand(sql1, conexionBis)

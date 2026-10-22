@@ -29,6 +29,7 @@ Partial Class Articulos
         Me.cmdSalir = New System.Windows.Forms.Button()
         Me.CmdGuardar = New System.Windows.Forms.Button()
         Me.ChkSaleEnInforme = New System.Windows.Forms.CheckBox()
+        Me.ChkGaseosa = New System.Windows.Forms.CheckBox()
         Me.SuspendLayout()
         '
         'lblCodigo
@@ -101,11 +102,22 @@ Partial Class Articulos
         Me.ChkSaleEnInforme.Text = "Sale en Informe"
         Me.ChkSaleEnInforme.UseVisualStyleBackColor = True
         '
+        'ChkGaseosa
+        '
+        Me.ChkGaseosa.AutoSize = True
+        Me.ChkGaseosa.Location = New System.Drawing.Point(192, 66)
+        Me.ChkGaseosa.Name = "ChkGaseosa"
+        Me.ChkGaseosa.Size = New System.Drawing.Size(95, 25)
+        Me.ChkGaseosa.TabIndex = 20
+        Me.ChkGaseosa.Text = "Gaseosa"
+        Me.ChkGaseosa.UseVisualStyleBackColor = True
+        '
         'Articulos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(611, 132)
+        Me.Controls.Add(Me.ChkGaseosa)
         Me.Controls.Add(Me.ChkSaleEnInforme)
         Me.Controls.Add(Me.CmdGuardar)
         Me.Controls.Add(Me.cmdSalir)
@@ -132,4 +144,5 @@ Partial Class Articulos
     Friend WithEvents cmdSalir As Button
     Friend WithEvents CmdGuardar As Button
     Friend WithEvents ChkSaleEnInforme As CheckBox
+    Friend WithEvents ChkGaseosa As CheckBox
 End Class

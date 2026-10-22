@@ -10,6 +10,7 @@ Public Class Articulos
         InitForm(Me)
 
         If Nuevo Then
+            ChkGaseosa.Checked = False
             CargoNumero()
         End If
 
@@ -84,9 +85,9 @@ Public Class Articulos
 
             End Try
 
-            SQL = "INSERT INTO articulos(codigo, descripcion, informe) VALUES (@codigo, @descripcion, @informe) "
+            SQL = "INSERT INTO articulos(codigo, descripcion, informe, gaseosa) VALUES (@codigo, @descripcion, @informe, @gaseosa) "
         Else
-            SQL = "UPDATE articulos SET codigo = @codigo, descripcion = @descripcion, informe = @informe WHERE id = " & id
+            SQL = "UPDATE articulos SET codigo = @codigo, descripcion = @descripcion, informe = @informe, gaseosa = @gaseosa WHERE id = " & id
         End If
         Try
             Dim comando = New MySqlCommand(SQL, conexion) With {
@@ -98,6 +99,11 @@ Public Class Articulos
                 comando.Parameters.AddWithValue("@informe", 1)
             Else
                 comando.Parameters.AddWithValue("@informe", 0)
+            End If
+            If (ChkGaseosa.Checked) Then
+                comando.Parameters.AddWithValue("@gaseosa", 1)
+            Else
+                comando.Parameters.AddWithValue("@gaseosa", 0)
             End If
 
             comando.ExecuteNonQuery()
