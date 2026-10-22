@@ -2,7 +2,7 @@
 
 Partial Class detalleRemito
 
-    Public Property cantidad As Integer
+    Public Property cantidad As Double
     Public Property codigo As String
     Public Property art As String
 

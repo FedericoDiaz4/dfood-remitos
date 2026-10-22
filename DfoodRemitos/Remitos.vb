@@ -221,6 +221,12 @@ Public Class Remitos
             Exit Sub
         End If
 
+        If cboCliente.SelectedIndex = -1 Then
+            Call MsgBox("Debe especificar el cliente.    ", vbExclamation)
+            txtCodCliente.Focus()
+            Exit Sub
+        End If
+
         Select Case MsgBox("¿DESEA GUARDAR EL COMPROBANTE?", vbYesNo Or vbQuestion Or vbDefaultButton2)
             Case vbNo : Exit Sub
         End Select
@@ -246,26 +252,12 @@ Public Class Remitos
             comando.Parameters.AddWithValue("@cantidadtotal", txtTotal.Text)
 
             comando.ExecuteNonQuery()
-            comando.Dispose()
 
-        Catch ex As Exception
-            CatchError(ex.Message, ex.StackTrace, SQL)
-            End
-
-        End Try
-
-        'Obtengo nuevo ID.
-        Try
-            SQL = "SELECT id FROM Remitos WHERE numerocomprobante = " & txtNumComprobante.Text & " AND ptoventa = " & cboPtoVenta.Text
-            Dim comando As New MySqlCommand(SQL, conexion)
-            Dim rsID As MySqlDataReader
-
-            rsID = comando.ExecuteReader
-            If rsID.Read Then
-                id = rsID("id")
+            'Obtengo nuevo ID.
+            If Nuevo Then
+                id = comando.LastInsertedId.ToString
             End If
 
-            rsID.Close()
             comando.Dispose()
 
         Catch ex As Exception
@@ -614,10 +606,9 @@ Public Class Remitos
             Dim rsPuntoVenta As MySqlDataReader
 
             rsPuntoVenta = comando.ExecuteReader
-            If rsPuntoVenta.Read Then
+            Do While rsPuntoVenta.Read
                 cboPtoVenta.Items.Add(rsPuntoVenta("puntoventa"))
-                rsPuntoVenta.NextResult()
-            End If
+            Loop
 
             rsPuntoVenta.Close()
             comando.Dispose()

@@ -39,7 +39,7 @@ Public Class InformeRemitos
             Dim rsRemito As MySqlDataReader
             Dim fila As Integer = 3
             Dim vuelta As Integer = 1
-            Dim cantidadTotal As Integer = 0
+            Dim cantidadTotal As Double = 0
             'Dim codigosSinUsar = New Integer() {7, 8, 12, 13, 14, 18, 19, 20}
             rsRemito = comando.ExecuteReader
             Do While rsRemito.Read()
@@ -59,7 +59,7 @@ Public Class InformeRemitos
                         hoja_trabajo.Cells(fila, 3) = rsRemito("nombre")
                         fila += 1
                     End If
-                    Dim cantidad As Integer = 0
+                    Dim cantidad As Double = 0
                     Do While rsRemitoD.Read
                         If (vuelta = 1) Then
                             hoja_trabajo.Cells(fila, 1) = "Codigo"

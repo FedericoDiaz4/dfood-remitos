@@ -19,7 +19,7 @@ Public Class RemitosList
         SQL = "SELECT v.id, v.idtipocomprobante, v.fecha, v.ptoventa, v.numerocomprobante, v.idcliente, c.codigo, c.nombre, v.cantidadtotal FROM Remitos AS v "
         SQL &= "INNER JOIN clientes AS c ON c.id = v.idcliente WHERE 0 = 0 AND v.eliminado = 0 "
         If cboCliente.SelectedIndex <> 0 And cboCliente.SelectedIndex <> -1 Then
-            SQL &= "AND v.idcliente '" & cboCliente.SelectedItem(0) & "' "
+            SQL &= "AND v.idcliente = '" & cboCliente.SelectedItem(0) & "' "
         End If
         If cboTipoComprobante.SelectedIndex <> -1 Then
             SQL &= "AND v.idtipocomprobante = '" & cboTipoComprobante.SelectedItem(0) & "' "

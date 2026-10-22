@@ -32,16 +32,18 @@ Public Class InformeEncabezadoRemitos
             Dim comando As New MySqlCommand(SQL, conexion)
             Dim rsRemito As MySqlDataReader
             Dim fila As Integer = 4
+            Dim cantidadRemitos As Integer = 0
             rsRemito = comando.ExecuteReader
             Do While rsRemito.Read()
                 hoja_trabajo.Cells(fila, 1) = "REMITO N° " + rsRemito("numerocomprobante")
                 hoja_trabajo.Cells(fila, 2) = rsRemito("fecha")
                 hoja_trabajo.Cells(fila, 3) = rsRemito("nombre")
                 fila += 1
+                cantidadRemitos += 1
             Loop
 
             hoja_trabajo.Cells(fila, 2) = "TOTAL GENERAL: "
-            hoja_trabajo.Cells(fila, 3) = rsRemito.FieldCount
+            hoja_trabajo.Cells(fila, 3) = cantidadRemitos
             rsRemito.Close()
             comando.Dispose()
             aplicacion.Visible = True
